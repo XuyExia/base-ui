@@ -1,4 +1,5 @@
 import axios from 'axios'
+import ProjectParam from '@/api/project_params'
 /* import {
     Message,
     MessageBox
@@ -6,7 +7,7 @@ import axios from 'axios'
 // import router from '@/router'
 // import store from '@/store'
 import {
-  //  getToken,
+    getToken,
   setToken
 } from '@/utils/common'
 
@@ -26,9 +27,9 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    let token = localStorage.getItem('authCode')
-    // let token = getToken();
-    config.headers['authCode'] = token
+    //let token = localStorage.getItem(ProjectParam.AUTH_NAME)
+     let token = getToken();
+    config.headers[ProjectParam.AUTH_NAME] = token
     return config
   },
   error => {
@@ -40,9 +41,12 @@ service.interceptors.request.use(
 // response interceptor
 service.interceptors.response.use(
   response => {
-    const authCode = response.request.headers['authCode']
-    setToken(authCode)
-    if (response.request.responseType === 'blob') {
+
+    if (response.data.code == ProjectParam.SUCCESS_CODE) {
+      const authCode = response.headers[ProjectParam.AUTH_NAME]
+      setToken(authCode)
+    }
+    if (response.responseType === 'blob') {
       console.log(response)
       return response
     } else {

@@ -38,8 +38,8 @@ export default {
     return {
       logining: false,
       ruleForm2: {
-        username: 'admin',
-        password: '123456'
+        username: 'xuyifan',
+        password: '111111'
       },
       rules2: {
         username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
@@ -57,10 +57,9 @@ export default {
           this.logining = true
           let usernames = this.$api.login.loginByUsername(this.ruleForm2)
           console.log(usernames)
-          if (this.ruleForm2.username === 'admin' &&
-                            this.ruleForm2.password === '123456') {
+          if (usernames.code==this.ProjectParam.SUCCESS_CODE) {
             this.logining = false
-            sessionStorage.setItem('user', this.ruleForm2.username)
+            sessionStorage.setItem('user', usernames.data.id)
             this.$router.push({path: '/'})
           } else {
             this.logining = false
@@ -69,7 +68,9 @@ export default {
             })
           }
         } else {
-          console.log('error submit!')
+          this.$alert('用户名和密码没有填写', '警告', {
+            confirmButtonText: 'ok'
+          })
           return false
         }
       })

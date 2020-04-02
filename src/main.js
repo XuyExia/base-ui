@@ -7,11 +7,11 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import api from '@/api';
 import Router from 'vue-router';
-
+import ProjectParam from '@/api/project_params'
 Vue.prototype.$api = api;
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-
+Vue.prototype.ProjectParam = ProjectParam;
 
 //在路由跳转的时候同一个路由多次添加是不被允许的
 //重写路由的push方法
