@@ -1,6 +1,6 @@
-import login  from '@/api/login'
+import login from '@/api/login'
 const api = {
-    login
+  login
 }
 
 export default api
