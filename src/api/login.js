@@ -1,9 +1,16 @@
 import request from '@/utils/request'
-
+import {baseURL} from '@/api/project_name'
+const dataManager = baseURL.dataManager
 export function loginByUsername (data) {
     return request({
-        url: `/user/getList`,
+        url: dataManager+`/user/getList`,
         method: 'post',
         data: data
     })
+}
+
+
+
+export default {
+    loginByUsername
 }

@@ -1,4 +1,4 @@
-import login from './login'
+import login  from '@/api/login'
 const api = {
     login
 }

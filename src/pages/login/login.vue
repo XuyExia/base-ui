@@ -55,6 +55,8 @@
                     if(valid){
                         console.log(valid);
                         this.logining = true;
+                        let usernames = this.$api.login.loginByUsername(this.ruleForm2);
+                        console.log(usernames);
                         if(this.ruleForm2.username === 'admin' &&
                             this.ruleForm2.password === '123456'){
                             this.logining = false;
