@@ -1,7 +1,7 @@
 export const baseURL = {
-    dataManager: '/data_manager'
+  dataManager: '/data_manager'
 }
 
 export default {
-    baseURL
+  baseURL
 }
