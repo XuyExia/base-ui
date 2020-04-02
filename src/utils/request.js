@@ -17,9 +17,6 @@ const service = axios.create({
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
     'X-Requested-With': 'XMLHttpRequest',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild',
-    'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
     'If-Modified-Since': 'Thu, 01 Jun 1970 00:00:00 GMT', // 避免 IE10 返回 304
     'shouldIntercept': true, // 若为 false,则不拦截在自己的请求里处理
     'authCode': ''

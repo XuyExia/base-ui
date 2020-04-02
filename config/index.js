@@ -11,17 +11,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      "/Mapi": {
+      "/Mapi/**": {
 
         target: "http://192.168.243.113:8090", // 徐毅凡IP
         changeOrigin: true, //改变源
         pathRewrite: {
-          "^/Mapi": ""
+          "^/Mapi": "/"
         }
       }
     },
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
