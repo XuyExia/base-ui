@@ -33,49 +33,49 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return {
-                logining: false,
-                ruleForm2: {
-                    username: 'admin',
-                    password: '123456',
-                },
-                rules2: {
-                    username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
-                    password: [{required: true, message: '请输入密码', trigger: 'blur'}]
-                },
-                checked: false
-            }
-        },
-        methods: {
-            // eslint-disable-next-line no-unused-vars
-            handleSubmit(event){
-                this.$refs.ruleForm2.validate((valid) => {
-                    if(valid){
-                        console.log(valid);
-                        this.logining = true;
-                        let usernames = this.$api.login.loginByUsername(this.ruleForm2);
-                        console.log(usernames);
-                        if(this.ruleForm2.username === 'admin' &&
-                            this.ruleForm2.password === '123456'){
-                            this.logining = false;
-                            sessionStorage.setItem('user', this.ruleForm2.username);
-                            this.$router.push({path: '/'});
-                        }else{
-                            this.logining = false;
-                            this.$alert('用户名和密码错误', '警告', {
-                                confirmButtonText: 'ok'
-                            })
-                        }
-                    }else{
-                        console.log('error submit!');
-                        return false;
-                    }
-                })
-            }
+export default {
+  data () {
+    return {
+      logining: false,
+      ruleForm2: {
+        username: 'admin',
+        password: '123456'
+      },
+      rules2: {
+        username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
+        password: [{required: true, message: '请输入密码', trigger: 'blur'}]
+      },
+      checked: false
+    }
+  },
+  methods: {
+    // eslint-disable-next-line no-unused-vars
+    handleSubmit (event) {
+      this.$refs.ruleForm2.validate((valid) => {
+        if (valid) {
+          console.log(valid)
+          this.logining = true
+          let usernames = this.$api.login.loginByUsername(this.ruleForm2)
+          console.log(usernames)
+          if (this.ruleForm2.username === 'admin' &&
+                            this.ruleForm2.password === '123456') {
+            this.logining = false
+            sessionStorage.setItem('user', this.ruleForm2.username)
+            this.$router.push({path: '/'})
+          } else {
+            this.logining = false
+            this.$alert('用户名和密码错误', '警告', {
+              confirmButtonText: 'ok'
+            })
+          }
+        } else {
+          console.log('error submit!')
+          return false
         }
-    };
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
