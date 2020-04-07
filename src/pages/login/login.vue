@@ -53,20 +53,20 @@ export default {
     handleSubmit (event) {
       this.$refs.ruleForm2.validate((valid) => {
         if (valid) {
-          console.log(valid)
           this.logining = true
-          let usernames = this.$api.login.loginByUsername(this.ruleForm2)
-          console.log(usernames)
-          if (usernames.code==this.ProjectParam.SUCCESS_CODE) {
-            this.logining = false
-            sessionStorage.setItem('user', usernames.data.id)
-            this.$router.push({path: '/'})
-          } else {
-            this.logining = false
-            this.$alert('用户名和密码错误', '警告', {
-              confirmButtonText: 'ok'
-            })
-          }
+          this.$api.login.loginByUsername(this.ruleForm2).then(res =>{
+           if (res.code==this.ProjectParam.SUCCESS_CODE) {
+             this.logining = false
+             sessionStorage.setItem('user', res.data.id)
+             this.$router.push({path: '/homepage'})
+           } else {
+             this.logining = false
+             this.$alert('用户名和密码错误', '警告', {
+               confirmButtonText: 'ok'
+             })
+           }
+          })
+
         } else {
           this.$alert('用户名和密码没有填写', '警告', {
             confirmButtonText: 'ok'
