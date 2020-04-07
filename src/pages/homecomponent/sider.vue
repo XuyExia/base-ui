@@ -1,6 +1,7 @@
 <template>
 
     <!-- 菜单组件 -->
+  <el-scrollbar class="SideBar-scrollbar" >
     <el-menu
       default-active="1"
       background-color="#2e2e2e"
@@ -9,8 +10,8 @@
       @close="handleClose"
       active-text-color="#4091df"
       text-color="white"
-      :collapse="isCollapse"
       unique-opened="true"
+      :collapse="isCollapse"
     >
       <!-- 子菜单：用户管理 -->
       <el-submenu index="1">
@@ -20,6 +21,15 @@
         </template>
         <el-menu-item-group>
           <el-menu-item index="11" >用户管理</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+        <el-menu-item index="12" >密码重置</el-menu-item>
+      </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group>
           <el-menu-item index="12" >密码重置</el-menu-item>
@@ -59,7 +69,7 @@
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
-
+  </el-scrollbar>
 </template>
 
 <script>
@@ -83,9 +93,14 @@
 </script>
 
 <style scoped>
-
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
+  .SideBar-scrollbar{
+    height: 100%;
   }
+  .SideBar-scrollbar .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+  .list-itema {
+    list-style-type: none;
+  }
+
 </style>
