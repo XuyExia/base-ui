@@ -3,15 +3,13 @@
     <!-- 菜单组件 -->
   <el-scrollbar class="SideBar-scrollbar" >
     <el-menu
+      :default-active="$route.path"
       default-active="1"
       background-color="#2e2e2e"
-      class="el-menu-vertical-left"
-      @open="handleOpen"
-      @close="handleClose"
       active-text-color="#4091df"
       text-color="white"
       unique-opened="true"
-      :collapse="isCollapse"
+      router
     >
       <!-- 子菜单：用户管理 -->
       <el-submenu index="1">
@@ -25,6 +23,33 @@
         <el-menu-item-group>
         <el-menu-item index="12" >密码重置</el-menu-item>
       </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="12" >密码重置</el-menu-item>
+        </el-menu-item-group>
         <el-menu-item-group>
           <el-menu-item index="12" >密码重置</el-menu-item>
         </el-menu-item-group>
@@ -76,8 +101,32 @@
   export default {
     data() {
       return {
-        isCollapse: false
-
+        isCollapse: false,
+        sysmenus:[{
+          id:1,
+          title:"用户管理",
+          icon:'el-icon-location',
+          url:"/page1",
+          children:[]
+        },{
+          id:1,
+          title:"用户管理",
+          icon:'el-icon-location',
+          url:"/page1",
+          children:[]
+        },{
+          id:1,
+          title:"用户管理",
+          icon:'el-icon-location',
+          url:"/page1",
+          children:[]
+        },{
+          id:1,
+          title:"用户管理",
+          icon:'el-icon-location',
+          url:"/page1",
+          children:[]
+        }]
 
       };
     },
@@ -99,8 +148,9 @@
   .SideBar-scrollbar .el-scrollbar__wrap {
     overflow-x: hidden;
   }
-  .list-itema {
-    list-style-type: none;
+
+  .el-scrollbar__thumb{
+    background-color: #3a8ee6;
   }
 
 </style>
