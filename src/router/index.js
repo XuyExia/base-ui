@@ -10,13 +10,38 @@ export const routerlists = [
   },
   {
     path: '/login', // 登录
-    name: 'Login',
+    name: 'login',
     component: () => import('@/pages/login/login')
   },
-  {
-    path: '/homepage', // 登录
-    name: 'HomePage',
-    component: () => import('@/pages/homepage/homepage')
+  {   path: '/homepage', // 登录
+    component: () => import('@/pages/homepage/homepage'),
+    children: [
+      {
+        path: '/main',
+        name: '首页',
+        component: () => import('@/pages/main'),
+      },
+      {
+        path: '/page1',
+        name: '页面1',
+        component: () => import('@/pages/page1'),
+      },
+      {
+        path: '/page2',
+        name: '页面2',
+        component: () => import('@/pages/page2'),
+      },
+      {
+        path: '/page3',
+        name: '页面3',
+        component: () => import('@/pages/page3'),
+      },
+      {
+        path: '/page4',
+        name: '页面4',
+        component: () => import('@/pages/page4'),
+      }
+    ]
   }
 
 
