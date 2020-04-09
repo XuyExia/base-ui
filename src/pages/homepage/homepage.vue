@@ -83,7 +83,9 @@
       tabClick(tab){
         console.log("tab",tab);
         console.log('active',this.activeIndex);
-        this.$router.push({path: this.activeIndex});
+        if (this.activeIndex!=this.$route.path){
+          this.$router.push({path: this.activeIndex});
+        }
       },
       //移除tab标签
       tabRemove(targetName){
@@ -123,8 +125,8 @@
         console.log('2');
         this.$store.commit('add_tabs', {route: '/main', name: '首页'});
         this.$store.commit('set_active_index', '/main');
-        //this.$router.push('/homepage/main');
-        this.$router.push({path: this.activeIndex});
+       // this.$router.push('/main');
+       // this.$router.push({path: this.activeIndex});
       }
 
     },
