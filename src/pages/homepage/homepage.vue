@@ -220,4 +220,10 @@
     background-color: #e9eef3;
     text-align: center;
   }
+  .app-wrap{
+    height: 100%;
+  }
+  .el-tabs__content{
+    height: 100%;
+  }
 </style>
