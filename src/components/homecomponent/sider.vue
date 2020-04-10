@@ -68,6 +68,9 @@
 
       };
     },
+    mounted(){
+
+    },
     methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);

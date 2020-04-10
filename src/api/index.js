@@ -1,6 +1,8 @@
 import login from '@/api/login'
+import sysmenu from "./sysmenu";
 const api = {
-  login
+  login,
+  sysmenu
 }
 
 export default api
