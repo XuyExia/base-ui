@@ -19,8 +19,7 @@ const service = axios.create({
     'Content-Type': 'application/json;charset=UTF-8',
     'X-Requested-With': 'XMLHttpRequest',
     'If-Modified-Since': 'Thu, 01 Jun 1970 00:00:00 GMT', // 避免 IE10 返回 304
-    'shouldIntercept': true, // 若为 false,则不拦截在自己的请求里处理
-    'authCode': ''
+    'shouldIntercept': true // 若为 false,则不拦截在自己的请求里处理
   },
   withCredentials: true
 })
@@ -37,6 +36,8 @@ service.interceptors.request.use(
     Promise.reject(error)
   }
 )
+const REQ_GET="get";
+const REQ_POST="post";
 
 // response interceptor
 service.interceptors.response.use(
@@ -51,7 +52,6 @@ service.interceptors.response.use(
       return response
     } else {
       const res = response.data
-      console.log(res)
       // eslint-disable-next-line prefer-promise-reject-errors
       return response.data
     }
@@ -106,7 +106,7 @@ service.interceptors.response.use(
   }
 )
 
-export default service
+export default service;
 
 
 

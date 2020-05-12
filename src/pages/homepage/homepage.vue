@@ -14,7 +14,7 @@
           <el-main class="elmain">
             <div class="app-wrap">
               <!-- 此处放置el-tabs代码 -->
-              <div >
+              <div>
                 <el-tabs
                   v-model="activeIndex"
                   type="border-card"
@@ -62,94 +62,95 @@
       Header
     },
     data() {
-      return {
-      };
+      return {};
     },
     computed: {
-      options () {
+      options() {
         return this.$store.state.options;
       },
-      activeIndex:{
-        get () {
+      //检查标签数组里面是否有该值
+      activeIndex: {
+        get() {
           return this.$store.state.activeIndex;
         },
-        set (val) {
+        set(val) {
           this.$store.commit('set_active_index', val);
         }
       }
     },
     methods: {
-      //tab标签点击时，切换相应的路由
-      tabClick(tab){
-        console.log("tab",tab);
-        console.log('active',this.activeIndex);
-        if (this.activeIndex!=this.$route.path){
+      //tab标签点击时如果是当前路由则不做任何处理否则切换相应的路由
+      tabClick(tab) {
+        if (this.activeIndex != this.$route.path) {
           this.$router.push({path: this.activeIndex});
         }
       },
       //移除tab标签
-      tabRemove(targetName){
-        console.log("tabRemove",targetName);
+      tabRemove(targetName) {
         //首页不删
-        if(targetName == '/main'){
+        if (targetName == '/main') {
           return
         }
-        this.$store.commit('delete_tabs', targetName);
+
+        //如果删除的路由是当前选择的路由则跳转到前一个路由
         if (this.activeIndex === targetName) {
-          // 设置当前激活的路由
-          if (this.options && this.options.length >= 1) {
-            console.log('=============',this.options[this.options.length-1].route)
-            this.$store.commit('set_active_index', this.options[this.options.length-1].route);
-            this.$router.push({path: this.activeIndex});
-          } else {
-            this.$router.push({path: '/'});
+          let index = 0;
+          for (let opt of this.options) {
+            if (opt.route === this.activeIndex) {
+              break
+            }
+            index++;
           }
+          this.$store.commit('set_active_index', this.options[index - 1].route);
+          this.$router.push({path: this.activeIndex});
         }
+        //删除数组标签中的路由
+        this.$store.commit('delete_tabs', targetName);
+
       }
 
 
-
     },
-    created () {
-      console.log("$route.path",this.$route.path);
+    created() {
       // 刷新时以当前路由做为tab加入tabs
       // 当前路由不是首页时，添加首页以及另一页到store里，并设置激活状态
       // 当当前路由是首页时，添加首页到store，并设置激活状态
+      let flag = false;
+      for (let opt of this.options) {
+        if (opt.route === val) {
+          flag = true;
+          break
+        }
+      }
       if (this.$route.path !== '/homepage' && this.$route.path !== '/main') {
-        console.log('1');
-        this.$store.commit('add_tabs', {route: '/main' , name: '首页'});
-       // this.$store.commit('add_tabs', {route: this.$route.path , name: this.$route.name });
-        this.$store.commit('set_active_index', '/main');
-        this.$router.push({path: this.activeIndex});
+        if (!flag) {
+          this.$store.commit('add_tabs', {route: '/main', name: '首页'});
+          this.$store.commit('set_active_index', '/main');
+          this.$router.push({path: this.activeIndex});
+        }
       } else {
-        console.log('2');
-        this.$store.commit('add_tabs', {route: '/main', name: '首页'});
-        this.$store.commit('set_active_index', '/main');
-       // this.$router.push('/main');
-       // this.$router.push({path: this.activeIndex});
+        if (!flag) {
+          this.$store.commit('add_tabs', {route: '/main', name: '首页'});
+          this.$store.commit('set_active_index', '/main');
+          this.$router.push({path: this.activeIndex});
+        }
       }
 
     },
-    watch:{
-      '$route'(to,from){
+    watch: {
+      '$route'(to, from) {
         //判断路由是否已经打开
         //已经打开的 ，将其置为active
         //未打开的，将其放入队列里
         let flag = false;
-        for(let item of this.options){
-          console.log("item.name",item.name)
-          console.log("t0.name",to.name)
-
-          if(item.name === to.name){
-            console.log('to.path',to.path);
-            this.$store.commit('set_active_index',to.path)
+        for (let item of this.options) {
+          if (item.route === to.path) {
+            this.$store.commit('set_active_index', to.path)
             flag = true;
             break;
           }
         }
-
-        if(!flag){
-          console.log('to.path',to.path);
+        if (!flag) {
           this.$store.commit('add_tabs', {route: to.path, name: to.name});
           this.$store.commit('set_active_index', to.path);
         }
@@ -158,8 +159,6 @@
 
 
     }
-
-
 
 
   };
@@ -190,12 +189,13 @@
   .elmain {
     background-color: white;
     display: block;
+  }
 
-
+  .el-menu {
+    border-right-width: 0;
   }
 
   .tlaside {
-
     height: 100%;
     background-color: #2e2e2e;
     overflow-x: hidden;
@@ -207,7 +207,6 @@
     background-color: white;
     padding: 0px;
   }
-
 
 
   .headerFooter {
@@ -222,10 +221,13 @@
     background-color: #e9eef3;
     text-align: center;
   }
-  .app-wrap{
+
+  .app-wrap {
     height: 100%;
   }
-  .el-tabs__content{
+
+  .el-tabs__content {
     height: 100%;
   }
+
 </style>

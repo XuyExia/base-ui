@@ -30,7 +30,7 @@
         <div class="navOperater">
           <el-dropdown>
            <span class="el-dropdown-link">
-              下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+             {{userInfo.userName}}<i class="el-icon-arrow-down el-icon--right"></i>
            </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>黄金糕</el-dropdown-item>
@@ -58,8 +58,26 @@
     data() {
       return {
         activeIndex: '1',
-        activeIndex2: '1'
+        activeIndex2: '1',
+        userInfo:{
+          id:"",
+          userName:"",
+          loginName:"",
+          imgUrl:""
+        }
       };
+    },
+    created() {
+      this.$api.userInfo.getCurrentUser().then(res =>{
+            console.log(res);
+           if (res.code==3000){
+             this.$router.push({path: '/login'})
+           }
+        this.userInfo.id=res.data.id;
+        this.userInfo.userName=res.data.userName;
+        this.userInfo.loginName=res.data.loginName;
+        this.userInfo.imgUrl=res.data.imgUrl;
+      })
     },
     methods: {
       handleSelect(key, keyPath) {

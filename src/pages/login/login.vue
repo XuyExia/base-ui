@@ -7,9 +7,9 @@
                  label-width="0px"
                  class="demo-ruleForm login-page">
             <h3 class="title">系统登录</h3>
-            <el-form-item prop="username">
+            <el-form-item prop="loginName">
                 <el-input type="text"
-                          v-model="ruleForm2.username"
+                          v-model="ruleForm2.loginName"
                           autocomplete="off"
                           placeholder="用户名"
                 ></el-input>
@@ -38,11 +38,11 @@ export default {
     return {
       logining: false,
       ruleForm2: {
-        username: 'xuyifan',
+        loginName: 'xuyifan',
         password: '111111'
       },
       rules2: {
-        username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
+        loginName: [{required: true, message: '请输入用户名', trigger: 'blur'}],
         password: [{required: true, message: '请输入密码', trigger: 'blur'}]
       },
       checked: false
@@ -54,6 +54,8 @@ export default {
       this.$refs.ruleForm2.validate((valid) => {
         if (valid) {
           this.logining = true
+          this.ruleForm2.password=this.$md5(this.ruleForm2.password);
+          console.log(this.ruleForm2.password)
           this.$api.login.loginByUsername(this.ruleForm2).then(res =>{
            if (res.code==this.ProjectParam.SUCCESS_CODE) {
              this.logining = false

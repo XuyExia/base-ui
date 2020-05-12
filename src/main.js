@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import api from '@/api';
 //import Router from 'vue-router';
 import ProjectParam from '@/api/project_params'
+import md5 from 'js-md5'
+Vue.prototype.$md5 = md5
 Vue.prototype.$api = api;
 Vue.config.productionTip = false
 Vue.use(ElementUI)

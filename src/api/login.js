@@ -1,10 +1,9 @@
 import request from '@/utils/request'
-import {baseURL} from '@/api/project_params'
-const dataManager = baseURL.dataManager
+import ProjectParam from '@/api/project_params'
 export function loginByUsername (data) {
     return request({
-        url: dataManager+`/gateway/login`,
-        method: 'post',
+        url: `/gateway/login`,
+        method: ProjectParam.REQ_POST,
         data: data
     })
 }
