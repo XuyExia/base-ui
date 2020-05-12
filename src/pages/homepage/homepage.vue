@@ -122,16 +122,16 @@
           break
         }
       }
-      if (this.$route.path !== '/homepage' && this.$route.path !== '/main') {
+      if (this.$route.path !== '/homepage' && this.$route.path !== '/homepage/main') {
         if (!flag) {
-          this.$store.commit('add_tabs', {route: '/main', name: '首页'});
-          this.$store.commit('set_active_index', '/main');
+          this.$store.commit('add_tabs', {route: '/homepage/main', name: '首页'});
+          this.$store.commit('set_active_index', '/homepage/main');
           this.$router.push({path: this.activeIndex});
         }
       } else {
         if (!flag) {
-          this.$store.commit('add_tabs', {route: '/main', name: '首页'});
-          this.$store.commit('set_active_index', '/main');
+          this.$store.commit('add_tabs', {route: '/homepage/main', name: '首页'});
+          this.$store.commit('set_active_index', '/homepage/main');
           this.$router.push({path: this.activeIndex});
         }
       }

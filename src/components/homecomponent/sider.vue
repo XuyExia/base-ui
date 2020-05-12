@@ -36,15 +36,15 @@
         menuList:[
           {
             id:'1',
-            title: '导航1',
+            title: '组织管理',
             icon:'el-icon-location',
             children:[
               {
-                index:'/page1',
-                childtitle:'导航1page1'
+                index:'/homepage/userinfoList',
+                childtitle:'用户管理'
               },
               {
-                index:'/page2',
+                index:'/homepage/page2',
                 childtitle:'导航1page2'
               },
             ]
@@ -55,12 +55,16 @@
             icon:'el-icon-location',
             children:[
               {
-                index:'/page3',
+                index:'/homepage/page3',
                 childtitle:'导航2page3'
               },
               {
-                index:'/page4',
+                index:'/homepage/page4',
                 childtitle:'导航2page4'
+              },
+              {
+                index:'/login',
+                childtitle:'登陆'
               },
             ]
           }
