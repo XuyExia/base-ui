@@ -23,11 +23,11 @@ export const routerlists = [
         component: () => import('@/pages/main'),
       },
       {
-        path: 'organization',
-        name: '组织管理',
-        component: () => import('@/pages/organization/userinfo/userinfoList'),
+        path: 'userManager',
+        name: '用户管理',
+        component: () => import('@/pages/organization/userManager/userinfoList'),
         children: [ {
-          path: 'userinfo/userinfoList',
+          path: 'userinfoList',
           name: '用户列表',
           component: () => import('@/pages/organization/userinfo/userinfoList'),
         },]
