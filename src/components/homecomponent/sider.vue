@@ -40,7 +40,7 @@
             icon:'el-icon-location',
             children:[
               {
-                index:'/homepage/userinfoList',
+                index:'/homepage/userManager',
                 childtitle:'用户管理'
               },
               {

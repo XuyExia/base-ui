@@ -11,7 +11,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      "/Mapi/**": {
+      "**/Mapi/**": {
 
         target: "http://192.168.0.106:8090", // 徐毅凡IP
         changeOrigin: true, //改变源
